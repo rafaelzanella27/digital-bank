@@ -1,15 +1,31 @@
 package com.lab.digitalbank.domain;
 
-public abstract class Conta {
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import org.hibernate.annotations.TypeDef;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "conta")
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
+public class Conta {
 
     private static final Integer AGENCIA_PADRAO = 1;
-
     private static int SEQUENCIAL = 1;
 
-    protected Integer agencia;
-    protected Integer numero;
-    protected double saldo;
-    protected Cliente cliente;
+    @Id
+    @Column(nullable = false)
+    private Integer numero;
+
+    @Column
+    private Integer agencia;
+
+    @Column
+    private double saldo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    private Cliente cliente;
 
     public Conta(Cliente cliente) {
         this.agencia = Conta.AGENCIA_PADRAO;
