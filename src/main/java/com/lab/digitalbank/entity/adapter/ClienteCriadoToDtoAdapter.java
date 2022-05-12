@@ -10,6 +10,7 @@ public class ClienteCriadoToDtoAdapter {
     public Map<String, Object> converte(Map<String, Object> entrada, Cliente cliente){
         if (Objects.nonNull(cliente)){
             entrada.put("nome", cliente.getNome());
+            entrada.put("id", cliente.getId());
         }
         return entrada;
     }

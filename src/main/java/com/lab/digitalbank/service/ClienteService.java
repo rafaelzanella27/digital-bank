@@ -12,8 +12,10 @@ public class ClienteService {
 
     @Autowired
     PersistCreateService persistCreateService;
+    @Autowired
+    ListaClientePorIdService listaClientePorIdService;
 
-    public Map<String, Object> execute(Map<String, Object> clienteDTO){
+    public Map<String, Object> salvar(Map<String, Object> clienteDTO){
         try {
             NovoClienteEntity novoClienteEntity = NovoClienteEntity.inicializa(clienteDTO);
             ClienteCriadoEntity clienteCriadoEntity = persistCreateService.execute(novoClienteEntity);
@@ -22,5 +24,9 @@ public class ClienteService {
             e.getMessage();
         }
         return null;
+    }
+
+    public Map<String, Object> listarCliente(Long id){
+        return listaClientePorIdService.execute(id);
     }
 }
