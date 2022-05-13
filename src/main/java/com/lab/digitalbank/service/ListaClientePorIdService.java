@@ -6,6 +6,7 @@ import com.lab.digitalbank.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -22,7 +23,9 @@ public class ListaClientePorIdService {
 
     private Map<String, Object> retornaClienteEncontrado(Optional<Cliente> cliente){
         if (cliente.isEmpty()){
-            String msg = "Cliente não encontrado";
+            Map<String, Object> errorMap = new HashMap<>();
+            errorMap.put("error", "Cliente não encontrado");
+            return errorMap;
         }
         return ConsultaClienteEntity.inicializa(cliente.get()).geraSaida();
     }

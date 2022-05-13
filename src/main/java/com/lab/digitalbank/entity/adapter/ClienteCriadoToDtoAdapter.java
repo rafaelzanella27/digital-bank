@@ -11,6 +11,9 @@ public class ClienteCriadoToDtoAdapter {
         if (Objects.nonNull(cliente)){
             entrada.put("nome", cliente.getNome());
             entrada.put("id", cliente.getId());
+            if (Objects.nonNull(cliente.getConta())){
+                entrada.put("Conta", cliente.getConta());
+            }
         }
         return entrada;
     }
