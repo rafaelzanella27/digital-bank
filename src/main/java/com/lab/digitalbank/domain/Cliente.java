@@ -32,4 +32,12 @@ public class Cliente {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
 }

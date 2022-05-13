@@ -21,9 +21,15 @@ public class ClienteController {
         return new ResponseEntity(response, HttpStatus.OK);
     }
 
-    @GetMapping("/cliente/id/{id}")
+    @GetMapping("/cliente/listar/{id}")
     public ResponseEntity listarCliente(@PathVariable("id") Long id){
     Map<String, Object> cliente = this.clienteService.listarCliente(id);
     return new ResponseEntity(cliente, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/cliente/deletar/{id}")
+    public ResponseEntity deletarCliente(@PathVariable("id") Long id){
+        String response = this.clienteService.deletar(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
