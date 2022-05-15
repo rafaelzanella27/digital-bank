@@ -5,16 +5,16 @@ import com.lab.digitalbank.entity.adapter.ClienteToDtoAdapter;
 
 import java.util.Map;
 
-public class CancelaClienteEntity {
+public class DeletarClienteEntity {
 
     private Cliente cliente;
 
-    private CancelaClienteEntity(Cliente cliente){
+    private DeletarClienteEntity(Cliente cliente){
         this.cliente = cliente;
     }
 
-    public static CancelaClienteEntity inicializa(Cliente cliente){
-        return new CancelaClienteEntity(cliente);
+    public static DeletarClienteEntity inicializa(Cliente cliente){
+        return new DeletarClienteEntity(cliente);
     }
 
     public Map<String, Object> geraSaida(){

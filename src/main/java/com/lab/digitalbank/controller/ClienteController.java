@@ -30,6 +30,12 @@ public class ClienteController {
     @DeleteMapping("/cliente/deletar/{id}")
     public ResponseEntity deletarCliente(@PathVariable("id") Long id){
         String response = this.clienteService.deletar(id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
+    @PutMapping("/cliente/atualizar/{id}")
+    public ResponseEntity atualizarCliente(@PathVariable("id") Long id, @RequestBody Map<String, Object> clienteDTO){
+        String response = this.clienteService.atualizarCliente(id, clienteDTO);
+        return new ResponseEntity(response, HttpStatus.OK);
     }
 }
