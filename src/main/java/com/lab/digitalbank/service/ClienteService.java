@@ -1,7 +1,7 @@
 package com.lab.digitalbank.service;
 
 import com.lab.digitalbank.domain.Cliente;
-import com.lab.digitalbank.entity.CancelaClienteEntity;
+import com.lab.digitalbank.entity.AtualizaClienteEntity;
 import com.lab.digitalbank.entity.ClienteCriadoEntity;
 import com.lab.digitalbank.entity.NovoClienteEntity;
 import com.lab.digitalbank.repository.ClienteRepository;
@@ -16,6 +16,9 @@ public class ClienteService {
 
     @Autowired
     PersistCreateService persistCreateService;
+
+    @Autowired
+    PersistUpdateClienteService persistUpdateClienteService;
 
     @Autowired
     ListaClientePorIdService listaClientePorIdService;
@@ -43,9 +46,18 @@ public class ClienteService {
         if (cliente.isEmpty()){
             return "Cliente inexistente";
         }
-
-//        CancelaClienteEntity cancelaClienteEntity = CancelaClienteEntity.inicializa(cliente.get());
         clienteRepository.delete(cliente.get());
         return "Cliente deletado com sucesso!";
     }
+
+    public String atualizarCliente(Long id, Map<String, Object> clienteDTO){
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        if (cliente.isEmpty()){
+            return "Cliente inexistente";
+        }
+        AtualizaClienteEntity atualizaClienteEntity = AtualizaClienteEntity.inicializa(clienteDTO, cliente.get());
+        return persistUpdateClienteService.execute(atualizaClienteEntity);
+    }
+
+
 }
