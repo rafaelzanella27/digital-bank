@@ -21,8 +21,9 @@ public class Cliente {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public Cliente setNome(String nome) {
         this.nome = nome;
+        return this;
     }
 
     public Long getId() {
@@ -37,7 +38,8 @@ public class Cliente {
         return conta;
     }
 
-    public void setConta(Conta conta) {
+    public Cliente setConta(Conta conta) {
         this.conta = conta;
+        return this;
     }
 }

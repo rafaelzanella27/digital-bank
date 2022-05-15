@@ -14,7 +14,7 @@ public class PersistCreateService {
 
     public ClienteCriadoEntity execute(NovoClienteEntity novoClienteEntity){
         Cliente cliente = saveClienteService.execute(novoClienteEntity.geraSaida());
-        ClienteCriadoEntity clienteCriadoEntity = ClienteCriadoEntity.inicializa(novoClienteEntity.getEntrada(), cliente);
+        ClienteCriadoEntity clienteCriadoEntity = ClienteCriadoEntity.inicializa(cliente);
         return clienteCriadoEntity;
     }
 }

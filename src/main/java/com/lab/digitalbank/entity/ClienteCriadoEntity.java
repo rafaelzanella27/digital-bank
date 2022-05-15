@@ -7,20 +7,18 @@ import java.util.Map;
 
 public class ClienteCriadoEntity {
 
-    private Map<String,Object> entrada;
     private Cliente cliente;
 
-    private ClienteCriadoEntity(Map<String, Object> entrada, Cliente cliente){
-        this.entrada = entrada;
+    private ClienteCriadoEntity(Cliente cliente){
         this.cliente = cliente;
     }
 
-    public static ClienteCriadoEntity inicializa(Map<String, Object> entrada, Cliente cliente){
-        return new ClienteCriadoEntity(entrada, cliente);
+    public static ClienteCriadoEntity inicializa(Cliente cliente){
+        return new ClienteCriadoEntity(cliente);
     }
 
     public Map<String, Object> geraSaida(){
-        return new ClienteCriadoToDtoAdapter().converte(entrada, cliente);
+        return new ClienteCriadoToDtoAdapter().converte(cliente);
     }
 
 }
