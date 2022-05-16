@@ -23,6 +23,7 @@ public class Conta {
     private Integer numero;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private TipoConta tipoConta;
 
     @Column
