@@ -1,9 +1,11 @@
 package com.lab.digitalbank.domain;
 
+import com.lab.digitalbank.enums.TipoConta;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "conta")
@@ -11,14 +13,17 @@ import javax.persistence.*;
 public class Conta {
 
     private static final Integer AGENCIA_PADRAO = 1;
-    private static int SEQUENCIAL = 1;
+
+    @Column
+    private Integer agencia = AGENCIA_PADRAO;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Integer numero;
 
     @Column
-    private Integer agencia;
+    private TipoConta tipoConta;
 
     @Column
     private double saldo;
@@ -27,10 +32,13 @@ public class Conta {
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Cliente cliente;
 
-    public Conta(Cliente cliente) {
-        this.agencia = Conta.AGENCIA_PADRAO;
-        this.numero = SEQUENCIAL++;
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Conta setCliente(Cliente cliente) {
         this.cliente = cliente;
+        return this;
     }
 
     public void sacar(double valor) {
@@ -57,6 +65,25 @@ public class Conta {
     public double getSaldo() {
         return saldo;
     }
+
+    public TipoConta getTipoConta() {
+        return tipoConta;
+    }
+
+    public Conta setTipoConta(TipoConta tipoConta) {
+        this.tipoConta = tipoConta;
+        return this;
+    }
+
+    public Conta setSaldo(double saldo) {
+        this.saldo = saldo;
+        return this;
+    }
+
+//    public Conta setAgencia(Integer agencia) {
+//        this.agencia = Conta.AGENCIA_PADRAO;
+//        return this;
+//    }
 
     protected void imprimirInfosComuns() {
         System.out.println(String.format("Titular: %s", this.cliente.getNome()));
