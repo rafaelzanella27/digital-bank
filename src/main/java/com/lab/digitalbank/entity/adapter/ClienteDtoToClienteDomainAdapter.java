@@ -4,14 +4,13 @@ import com.lab.digitalbank.domain.Cliente;
 import com.lab.digitalbank.domain.Conta;
 import com.lab.digitalbank.enums.TipoConta;
 
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class ClienteDtoToClienteDomainAdapter {
 
     public Cliente converte(Map<String, Object> entrada){
         Cliente cliente = new Cliente();
-        Conta conta = new Conta();
+        List<Conta> listaConta = new ArrayList<>();
         if (Objects.nonNull(entrada)){
             if (entrada.containsKey("cliente") && Objects.nonNull(entrada.get("cliente"))){
                 Map<String, Object> clienteMap = (Map<String, Object>) entrada.get("cliente");
@@ -19,16 +18,25 @@ public class ClienteDtoToClienteDomainAdapter {
                     cliente.setNome(clienteMap.get("nome").toString());
                 }
             }
-            if (entrada.containsKey("conta") && Objects.nonNull(entrada.get("conta"))){
-                Map<String, Object> contaMap = (Map<String, Object>) entrada.get("conta");
-                if (contaMap.containsKey("tipo") && Objects.nonNull(contaMap.get("tipo"))){
-                    conta.setTipoConta(TipoConta.fromString(contaMap.get("tipo").toString()));
-                    if (contaMap.containsKey("saldo") && Objects.nonNull(contaMap.get("saldo"))){
-                        conta.setSaldo(Double.valueOf(contaMap.get("saldo").toString()));
+            if (entrada.containsKey("contas") && Objects.nonNull(entrada.get("contas"))){
+                List<Conta> listContasManipulation = (List<Conta>) entrada.get("contas");
+
+                for (int i = 0; i < listContasManipulation.size(); i++){
+                    Map<String, Object> mapConta = (Map<String, Object>) listContasManipulation.get(i);
+                    if (Objects.nonNull(mapConta)){
+                        Conta conta = new Conta();
+                        if (Objects.nonNull(mapConta.get("tipo"))){
+                            conta.setTipoConta(TipoConta.fromString(mapConta.get("tipo").toString()));
+                        }
+                        if (Objects.nonNull(mapConta.get("saldo"))){
+                            conta.setSaldo(Double.valueOf(mapConta.get("saldo").toString()));
+                        }
+                        listaConta.add(conta);
                     }
-                    cliente.setConta(conta);
+                    cliente.setConta(listaConta);
                 }
             }
-        } return cliente;
+        }
+        return cliente;
     }
 }

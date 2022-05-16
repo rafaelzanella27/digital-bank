@@ -1,10 +1,9 @@
 package com.lab.digitalbank.entity.adapter;
 
 import com.lab.digitalbank.domain.Cliente;
+import com.lab.digitalbank.domain.Conta;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class ClienteCriadoToDtoAdapter {
 
@@ -21,20 +20,16 @@ public class ClienteCriadoToDtoAdapter {
             saída.put("Cliente", clienteSaída);
 
             if (Objects.nonNull(cliente.getConta())){
-                Map<String, Object> contaSaída = new HashMap<>();
-                if (Objects.nonNull(cliente.getConta().getAgencia())){
-                    contaSaída.put("Agencia", cliente.getConta().getAgencia());
+                List<Conta> listaContaManipulation = cliente.getConta();
+                List<Conta> listaConta = new ArrayList<>();
+
+                if (Objects.nonNull(listaContaManipulation)){
+                    for (int i = 0; i < listaContaManipulation.size(); i++){
+                        Conta contaManipulation = listaContaManipulation.get(i);
+                        listaConta.add(contaManipulation);
+                    }
                 }
-                if (Objects.nonNull(cliente.getConta().getNumero())){
-                    contaSaída.put("Numero", cliente.getConta().getNumero());
-                }
-                if (Objects.nonNull(cliente.getConta().getTipoConta())){
-                    contaSaída.put("TipoDaConta", cliente.getConta().getTipoConta());
-                }
-                if (Objects.nonNull(cliente.getConta().getSaldo())){
-                    contaSaída.put("Saldo", cliente.getConta().getSaldo());
-                }
-                saída.put("Conta", contaSaída);
+            saída.put("Contas", listaConta);
             }
         }
         return saída;
