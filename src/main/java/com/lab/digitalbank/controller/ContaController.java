@@ -4,9 +4,7 @@ import com.lab.digitalbank.service.ContaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -29,9 +27,9 @@ public class ContaController {
 //        return new ResponseEntity(response, HttpStatus.OK);
 //    }
 //
-//    @PutMapping("/cliente/atualizar/{id}")
-//    public ResponseEntity atualizarCliente(@PathVariable("id") Integer id, @RequestBody Map<String, Object> clienteDTO){
-//        String response = this.clienteService.atualizarCliente(id, clienteDTO);
-//        return new ResponseEntity(response, HttpStatus.OK);
-//    }
+    @PutMapping("/conta/atualizar/{numero}")
+    public ResponseEntity atualizarConta(@PathVariable("numero") Integer numero, @RequestBody Map<String, Object> contaDTO){
+        String response = this.contaService.atualizarConta(numero, contaDTO);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
 }

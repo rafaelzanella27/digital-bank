@@ -6,15 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class SaveContaService {
+public class SaveListaDeContaService {
 
     @Autowired
     private ContaRepository contaRepository;
 
-    public Conta execute(Conta conta){
+    public List<Conta> execute(List<Conta> listaContas){
         try{
-            return contaRepository.save(conta);
+            return contaRepository.saveAll(listaContas);
         }catch (DataIntegrityViolationException e){
             System.out.println(e.getMostSpecificCause().getMessage());
         }

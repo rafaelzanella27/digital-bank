@@ -1,23 +1,25 @@
 package com.lab.digitalbank.service;
 
-import com.lab.digitalbank.repository.ClienteRepository;
+import com.lab.digitalbank.domain.Conta;
+import com.lab.digitalbank.entity.AtualizaContaEntity;
+import com.lab.digitalbank.repository.ContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class ContaService {
 
     @Autowired
-    PersistUpdateClienteService persistUpdateClienteService;
+    PersistUpdateContaService persistUpdateContaService;
 
     @Autowired
     ListaContaPorIdService listaContaPorIdService;
 
     @Autowired
-    ClienteRepository clienteRepository;
-
+    ContaRepository contaRepository;
 
     public Map<String, Object> listarCliente(Integer id){
         return listaContaPorIdService.execute(id);
@@ -32,14 +34,14 @@ public class ContaService {
 //        return "Cliente deletado com sucesso!";
 //    }
 //
-//    public String atualizarCliente(Integer id, Map<String, Object> clienteDTO){
-//        Optional<Cliente> cliente = clienteRepository.findById(id);
-//        if (cliente.isEmpty()){
-//            return "Cliente inexistente";
-//        }
-//        AtualizaClienteEntity atualizaClienteEntity = AtualizaClienteEntity.inicializa(clienteDTO, cliente.get());
-//        return persistUpdateClienteService.execute(atualizaClienteEntity);
-//    }
+    public String atualizarConta(Integer numero, Map<String, Object> contaDTO){
+        Optional<Conta> conta = contaRepository.findById(numero);
+        if (conta.isEmpty()){
+            return "Conta inexistente";
+        }
+        AtualizaContaEntity atualizaContaEntity = AtualizaContaEntity.inicializa(contaDTO, conta.get());
+        return persistUpdateContaService.execute(atualizaContaEntity);
+    }
 
 
 }

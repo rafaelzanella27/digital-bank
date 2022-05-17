@@ -19,12 +19,12 @@ public class PersistCreateService {
     SaveClienteService saveClienteService;
 
     @Autowired
-    SaveContaService saveContaService;
+    SaveListaDeContaService saveListaDeContaService;
 
     public Map<String, Object> execute(NovoClienteEntity novoClienteEntity){
         Cliente cliente = saveClienteService.execute(novoClienteEntity.geraSaida());
         if (novoClienteEntity.possuiContas()){
-            List<Conta> listContas = saveContaService.execute(NovaContaEntity.inicializa(novoClienteEntity.getEntrada(), cliente).geraSaida());
+            List<Conta> listContas = saveListaDeContaService.execute(NovaContaEntity.inicializa(novoClienteEntity.getEntrada(), cliente).geraSaida());
             ClienteContaCriadoEntity clienteContaCriadoEntity = ClienteContaCriadoEntity.inicializa(cliente,listContas);
             return clienteContaCriadoEntity.geraSaida();
         }
