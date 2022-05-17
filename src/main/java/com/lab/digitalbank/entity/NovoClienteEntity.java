@@ -29,4 +29,8 @@ public class NovoClienteEntity {
     public Map<String, Object> getEntrada(){
         return this.entrada;
     }
+
+    public Boolean possuiContas(){
+        return this.entrada.containsKey("contas");
+    }
 }

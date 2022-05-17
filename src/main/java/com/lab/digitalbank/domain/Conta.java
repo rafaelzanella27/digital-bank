@@ -5,7 +5,6 @@ import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "conta")
@@ -23,6 +22,7 @@ public class Conta {
     private Integer numero;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private TipoConta tipoConta;
 
     @Column
@@ -58,7 +58,7 @@ public class Conta {
         return agencia;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
@@ -80,10 +80,6 @@ public class Conta {
         return this;
     }
 
-//    public Conta setAgencia(Integer agencia) {
-//        this.agencia = Conta.AGENCIA_PADRAO;
-//        return this;
-//    }
 
     protected void imprimirInfosComuns() {
         System.out.println(String.format("Titular: %s", this.cliente.getNome()));

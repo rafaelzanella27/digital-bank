@@ -1,6 +1,7 @@
 package com.lab.digitalbank.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "cliente")
@@ -9,13 +10,13 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column
     private String nome;
 
-    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private Conta conta;
+//    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+//    private List<Conta> conta;
 
     public String getNome() {
         return nome;
@@ -26,20 +27,20 @@ public class Cliente {
         return this;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Conta getConta() {
-        return conta;
-    }
-
-    public Cliente setConta(Conta conta) {
-        this.conta = conta;
-        return this;
-    }
+//    public List<Conta> getConta() {
+//        return conta;
+//    }
+//
+//    public Cliente setConta(List<Conta> conta) {
+//        this.conta = conta;
+//        return this;
+//    }
 }

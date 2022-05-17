@@ -19,23 +19,6 @@ public class ClienteCriadoToDtoAdapter {
                 clienteSaída.put("id", cliente.getId());
             }
             saída.put("Cliente", clienteSaída);
-
-            if (Objects.nonNull(cliente.getConta())){
-                Map<String, Object> contaSaída = new HashMap<>();
-                if (Objects.nonNull(cliente.getConta().getAgencia())){
-                    contaSaída.put("Agencia", cliente.getConta().getAgencia());
-                }
-                if (Objects.nonNull(cliente.getConta().getNumero())){
-                    contaSaída.put("Numero", cliente.getConta().getNumero());
-                }
-                if (Objects.nonNull(cliente.getConta().getTipoConta())){
-                    contaSaída.put("TipoDaConta", cliente.getConta().getTipoConta());
-                }
-                if (Objects.nonNull(cliente.getConta().getSaldo())){
-                    contaSaída.put("Saldo", cliente.getConta().getSaldo());
-                }
-                saída.put("Conta", contaSaída);
-            }
         }
         return saída;
     }
