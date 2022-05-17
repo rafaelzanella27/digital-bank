@@ -2,7 +2,6 @@ package com.lab.digitalbank.service;
 
 import com.lab.digitalbank.domain.Cliente;
 import com.lab.digitalbank.entity.AtualizaClienteEntity;
-import com.lab.digitalbank.entity.ClienteCriadoEntity;
 import com.lab.digitalbank.entity.NovoClienteEntity;
 import com.lab.digitalbank.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +28,7 @@ public class ClienteService {
     public Map<String, Object> salvar(Map<String, Object> clienteDTO){
         try {
             NovoClienteEntity novoClienteEntity = NovoClienteEntity.inicializa(clienteDTO);
-            ClienteCriadoEntity clienteCriadoEntity = persistCreateService.execute(novoClienteEntity);
-            return clienteCriadoEntity.geraSaida();
+            return persistCreateService.execute(novoClienteEntity);
         }catch (RuntimeException e){
             e.getMessage();
         }

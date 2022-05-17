@@ -13,10 +13,6 @@ public class ClienteToDtoAdapter {
         if (Objects.nonNull(cliente)){
             clienteDto.put("nome", cliente.getNome());
             clienteDto.put("id", cliente.getId());
-            if (Objects.nonNull(cliente.getConta())){
-                clienteDto.put("Conta", cliente.getConta());
-            }
-
         }
         return clienteDto;
     }

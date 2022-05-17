@@ -58,7 +58,7 @@ public class Conta {
         return agencia;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 

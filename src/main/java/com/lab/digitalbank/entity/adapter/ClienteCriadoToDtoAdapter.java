@@ -1,9 +1,10 @@
 package com.lab.digitalbank.entity.adapter;
 
 import com.lab.digitalbank.domain.Cliente;
-import com.lab.digitalbank.domain.Conta;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class ClienteCriadoToDtoAdapter {
 
@@ -18,19 +19,6 @@ public class ClienteCriadoToDtoAdapter {
                 clienteSaída.put("id", cliente.getId());
             }
             saída.put("Cliente", clienteSaída);
-
-            if (Objects.nonNull(cliente.getConta())){
-                List<Conta> listaContaManipulation = cliente.getConta();
-                List<Conta> listaConta = new ArrayList<>();
-
-                if (Objects.nonNull(listaContaManipulation)){
-                    for (int i = 0; i < listaContaManipulation.size(); i++){
-                        Conta contaManipulation = listaContaManipulation.get(i);
-                        listaConta.add(contaManipulation);
-                    }
-                }
-            saída.put("Contas", listaConta);
-            }
         }
         return saída;
     }

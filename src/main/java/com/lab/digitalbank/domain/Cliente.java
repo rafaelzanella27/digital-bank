@@ -10,13 +10,13 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column
     private String nome;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<Conta> conta;
+//    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+//    private List<Conta> conta;
 
     public String getNome() {
         return nome;
@@ -27,30 +27,20 @@ public class Cliente {
         return this;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-//    public Conta getConta() {
+//    public List<Conta> getConta() {
 //        return conta;
 //    }
 //
-//    public Cliente setConta(Conta conta) {
+//    public Cliente setConta(List<Conta> conta) {
 //        this.conta = conta;
 //        return this;
 //    }
-
-
-    public List<Conta> getConta() {
-        return conta;
-    }
-
-    public Cliente setConta(List<Conta> conta) {
-        this.conta = conta;
-        return this;
-    }
 }
