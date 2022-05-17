@@ -35,11 +35,11 @@ public class ClienteService {
         return null;
     }
 
-    public Map<String, Object> listarCliente(Long id){
+    public Map<String, Object> listarCliente(Integer id){
         return listaClientePorIdService.execute(id);
     }
 
-    public String deletar(Long id){
+    public String deletar(Integer id){
         Optional<Cliente> cliente = clienteRepository.findById(id);
         if (cliente.isEmpty()){
             return "Cliente inexistente";
@@ -48,7 +48,7 @@ public class ClienteService {
         return "Cliente deletado com sucesso!";
     }
 
-    public String atualizarCliente(Long id, Map<String, Object> clienteDTO){
+    public String atualizarCliente(Integer id, Map<String, Object> clienteDTO){
         Optional<Cliente> cliente = clienteRepository.findById(id);
         if (cliente.isEmpty()){
             return "Cliente inexistente";

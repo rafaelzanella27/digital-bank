@@ -22,19 +22,19 @@ public class ClienteController {
     }
 
     @GetMapping("/cliente/listar/{id}")
-    public ResponseEntity listarCliente(@PathVariable("id") Long id){
+    public ResponseEntity listarCliente(@PathVariable("id") Integer id){
     Map<String, Object> cliente = this.clienteService.listarCliente(id);
     return new ResponseEntity(cliente, HttpStatus.OK);
     }
 
     @DeleteMapping("/cliente/deletar/{id}")
-    public ResponseEntity deletarCliente(@PathVariable("id") Long id){
+    public ResponseEntity deletarCliente(@PathVariable("id") Integer id){
         String response = this.clienteService.deletar(id);
         return new ResponseEntity(response, HttpStatus.OK);
     }
 
     @PutMapping("/cliente/atualizar/{id}")
-    public ResponseEntity atualizarCliente(@PathVariable("id") Long id, @RequestBody Map<String, Object> clienteDTO){
+    public ResponseEntity atualizarCliente(@PathVariable("id") Integer id, @RequestBody Map<String, Object> clienteDTO){
         String response = this.clienteService.atualizarCliente(id, clienteDTO);
         return new ResponseEntity(response, HttpStatus.OK);
     }
