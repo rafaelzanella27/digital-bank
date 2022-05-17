@@ -16,7 +16,7 @@ public class ListaClientePorIdService {
     @Autowired
     ClienteRepository clienteRepository;
 
-    public Map<String, Object> execute(Long id){
+    public Map<String, Object> execute(Integer id){
         Optional<Cliente> cliente = clienteRepository.findById(id);
         return retornaClienteEncontrado(cliente);
     }
