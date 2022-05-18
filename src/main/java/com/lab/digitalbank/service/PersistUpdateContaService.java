@@ -12,6 +12,6 @@ public class PersistUpdateContaService {
 
     public String execute(AtualizaContaEntity atualizaContaEntity){
         saveContaService.execute(atualizaContaEntity.geraSaida());
-        return "Conta atualizado com sucesso";
+        return "Conta atualizada com sucesso";
     }
 }
