@@ -1,16 +1,16 @@
-##Projeto
-###API-REST - Digital Bank 
+Projeto - API-REST - Digital Bank 
+________________________________________________________________________________________________________________________________
 API Rest de um banco, com CRUD de clientes e contas.
 Para clientes é possível: Criar um novo, listar, deletar e atualizar.
 Para contas é possível: Criar a conta no momento de cadastro do cliente, listar, atualizar o tipo da conta e deletar.
-
-###Pré-requisitos
+_____________________________________________________________________________________________________________________________
+Pré-requisitos
 Java 11 | Spring Boot | Maven  
 Banco de Dados MySql  
 Docker   
 Postman
-
-###Configuração da banco de Dados MySql com Docker
+________________________________________________________________________________________________________________________________
+Configuração da banco de Dados MySql com Docker
 Utilizamos o Docker para executar o MySQL
 
 Acesse a pasta docker e execute o comando:
