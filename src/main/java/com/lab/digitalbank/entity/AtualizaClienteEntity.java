@@ -1,7 +1,6 @@
 package com.lab.digitalbank.entity;
 
 import com.lab.digitalbank.domain.Cliente;
-import com.lab.digitalbank.entity.adapter.ClienteCriadoToDtoAdapter;
 
 import java.util.Map;
 import java.util.Objects;
