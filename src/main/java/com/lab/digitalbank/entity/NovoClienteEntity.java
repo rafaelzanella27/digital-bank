@@ -20,8 +20,7 @@ public class NovoClienteEntity {
 
     public Cliente geraSaida(){
         if (Objects.nonNull(entrada)){
-            Cliente cliente = new ClienteDtoToClienteDomainAdapter().converte(this.entrada);
-            return cliente;
+            return new ClienteDtoToClienteDomainAdapter().converte(this.entrada);
         }
         return null;
     }
