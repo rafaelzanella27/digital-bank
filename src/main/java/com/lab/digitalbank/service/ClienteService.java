@@ -44,7 +44,11 @@ public class ClienteService {
         if (cliente.isEmpty()){
             return "Cliente inexistente";
         }
-        clienteRepository.delete(cliente.get());
+        try {
+            clienteRepository.delete(cliente.get());
+        } catch (Exception e){
+            return "Não é possível deletar um cliente com uma conta vinculada.";
+        }
         return "Cliente deletado com sucesso!";
     }
 

@@ -25,15 +25,19 @@ public class ContaService {
         return listaContaPorIdService.execute(id);
     }
 
-//    public String deletar(Integer id){
-//        Optional<Cliente> cliente = clienteRepository.findById(id);
-//        if (cliente.isEmpty()){
-//            return "Cliente inexistente";
-//        }
-//        clienteRepository.delete(cliente.get());
-//        return "Cliente deletado com sucesso!";
-//    }
-//
+    public String deletar(Integer numero){
+        Optional<Conta> conta = contaRepository.findById(numero);
+        if (conta.isEmpty()){
+            return "Conta inexistente";
+        }
+        try {
+            contaRepository.delete(conta.get());
+        }   catch (Exception e){
+            return "Não é possível deletar uma conta com cliente vinculado.";
+        }
+        return "Conta deletada com sucesso!";
+    }
+
     public String atualizarConta(Integer numero, Map<String, Object> contaDTO){
         Optional<Conta> conta = contaRepository.findById(numero);
         if (conta.isEmpty()){

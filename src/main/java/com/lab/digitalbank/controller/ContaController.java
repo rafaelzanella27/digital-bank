@@ -21,12 +21,12 @@ public class ContaController {
     return new ResponseEntity(cliente, HttpStatus.OK);
     }
 
-//    @DeleteMapping("/cliente/deletar/{id}")
-//    public ResponseEntity deletarCliente(@PathVariable("id") Integer id){
-//        String response = this.clienteService.deletar(id);
-//        return new ResponseEntity(response, HttpStatus.OK);
-//    }
-//
+    @DeleteMapping("/conta/deletar/{numero}")
+    public ResponseEntity deletarConta(@PathVariable("numero") Integer numero){
+        String response = this.contaService.deletar(numero);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
     @PutMapping("/conta/atualizar/{numero}")
     public ResponseEntity atualizarConta(@PathVariable("numero") Integer numero, @RequestBody Map<String, Object> contaDTO){
         String response = this.contaService.atualizarConta(numero, contaDTO);
