@@ -3,7 +3,6 @@ package com.lab.digitalbank.entity;
 import com.lab.digitalbank.domain.Cliente;
 import com.lab.digitalbank.domain.Conta;
 import com.lab.digitalbank.entity.adapter.ClienteContaDtoToClienteContaDomainAdapter;
-import com.lab.digitalbank.entity.adapter.ClienteDtoToClienteDomainAdapter;
 
 import java.util.List;
 import java.util.Map;
