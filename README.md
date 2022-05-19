@@ -22,12 +22,12 @@ Se não quiser utilizar o Docker você precisa ter o MySQL instalado no seu comp
 spring.datasource.username=root   
 spring.datasource.password=root
 
-
+________________________________________________________________________________________________________________________________
 Utilizar o postman com as requisições:  
 Para cadastrar um NOVO CLIENTE:
 >POST: http://localhost:8080/cliente/novoCliente
 
-{
+JSON: {
 "cliente":
         {
     "nome": "Joao"
@@ -38,11 +38,43 @@ Para LISTAR CLIENTE:
 >GET: http://localhost:8080/cliente/listar/{id}
 
 Para DELETAR CLIENTE:
->DEL: http://localhost:8080/cliente/deletar/{id}
+>DELETE: http://localhost:8080/cliente/deletar/{id}
 
 Para ATUALIZAR CLIENTE:
 >PUT: http://localhost:8080/cliente/atualizar/{id}
 
-{
+
+JSON: {
 "nome": "NomeAtualizado"
+}
+---------------------------------------------------------------------------------------------------------------
+Para LISTAR CONTA POR ID DO CLIENTE:
+>GET: http://localhost:8080/conta/listarPorIdCliente/{id_cliente}
+
+Para DELETAR UMA CONTA POR NUMERO DA CONTA:
+>DELETE: http://localhost:8080/cliente/deletar/{numero_conta}
+
+Para ATUALIZAR UMA CONTA POR NUMERO DA CONTA:
+>PUT: http://localhost:8080/conta/atualizar/{numero_conta}
+
+---------------------------------------------------------------------------------------------------------------------------
+Para criar um CLIENTE com uma CONTA já vinculada
+>POST: http://localhost:8080/clienteConta/novoVincular
+
+JSON: 
+{
+"cliente":
+{
+"nome": "Joao"
+},
+"contas":[
+{
+"tipo": "conta-corrente",
+"saldo": 5500
+},
+{
+"tipo": "conta-poupanca",
+"saldo": 250500
+}
+]
 }
