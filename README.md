@@ -21,3 +21,28 @@ Se não quiser utilizar o Docker você precisa ter o MySQL instalado no seu comp
 
 spring.datasource.username=root   
 spring.datasource.password=root
+
+
+Utilizar o postman com as requisições:  
+Para cadastrar um NOVO CLIENTE:
+>POST: http://localhost:8080/cliente/novoCliente
+
+{
+"cliente":
+        {
+    "nome": "Joao"
+        }
+}
+
+Para LISTAR CLIENTE:
+>GET: http://localhost:8080/cliente/listar/{id}
+
+Para DELETAR CLIENTE:
+>DEL: http://localhost:8080/cliente/deletar/{id}
+
+Para ATUALIZAR CLIENTE:
+>PUT: http://localhost:8080/cliente/atualizar/{id}
+
+{
+"nome": "NomeAtualizado"
+}
